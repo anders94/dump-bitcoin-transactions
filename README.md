@@ -4,7 +4,7 @@ transferred. This way of summarizing transactions is useful to test other system
 world" data.
 
 Requires node.js with `npm` and uses the `bitcoin-core` module. I found the module not well
-documented to I added some [bitcoin-core module examples](bitcoin-core.md).
+documented to I added some [bitcoin-core module examples](bitcoin-rpc.md).
 
 ## Theory of Operation
 Using data from an indexed full bitcoin node, start at block 0 and summarize each transaction,
