@@ -1,0 +1,14 @@
+{
+  "name": "dump-bitcoin-transactions",
+  "version": "1.0.0",
+  "description": "Using a bitcoin full node's RPC, dump a chronological list of transactions.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anders Brownworth",
+  "license": "ISC",
+  "dependencies": {
+    "bitcoin-core": "^3.0.0"
+  }
+}
