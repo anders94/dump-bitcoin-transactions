@@ -1,7 +1,7 @@
 # dump-bitcoin-transactions
 Generates a chronological list of all transactions summarizing each input, output and value
-transferred. This way of summarizing transactions is useful to test other systems using "real
-world" data.
+transferred. This way of summarizing transactions is useful to test other systems using real
+world data from the bitcoin network.
 
 Requires node.js with `npm` and uses the `bitcoin-core` module. I found the module not well
 documented to I added some [bitcoin-core module examples](bitcoin-rpc.md).
