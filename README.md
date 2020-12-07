@@ -3,6 +3,9 @@ Generates a chronological list of all transactions summarizing each input, outpu
 transferred. This way of summarizing transactions is useful to test other systems using "real
 world" data.
 
+Requires node.js with `npm` and uses the `bitcoin-core` module. I found the module not well
+documented to I added some [bitcoin-core module examples](bitcoin-core.md).
+
 ## Theory of Operation
 Using data from an indexed full bitcoin node, start at block 0 and summarize each transaction,
 one per line of JSON, exposing all the transaction IDs and indexes of all inputs and outputs
@@ -21,7 +24,9 @@ as well as associated values. Each line of the output is a complete JSON string 
   ]
 }
 ```
-Coinbase transactions come from the imaginary transaction id 
+Coinbase transactions come from the imaginary transaction id
+`0000000000000000000000000000000000000000000000000000000000000000`.
+
 ## Sample Output
 ```
 {"ins":[["0000000000000000000000000000000000000000000000000000000000000000-0","5000000000"]],"outs":[["e958faf790304fc4185b377552e93fddae3a513c255f8bb09526b5886ab83936-0","5201000000"]]}
@@ -30,8 +35,10 @@ Coinbase transactions come from the imaginary transaction id
 ```
 
 ## Setup
-Requires node.js with `npm`.
-```npm install```
+Install all the dependancies:
+```
+npm install
+```
 
 Set environment variables to point to the RPC service of a fullly indexed bitcoin node.
 ```
