@@ -45,8 +45,20 @@ const main = async () => {
 
 		    if (vin.coinbase)
 			data.ins.push(['0000000000000000000000000000000000000000000000000000000000000000-0', allowedSupply(block.height).toString()]);
-		    else
-			data.ins.push([vin.txid+'-'+vin.vout, allowedSupply(block.height).toString()]);
+		    else {
+			const intxHex = await rpc.getRawTransaction(vin.txid);
+			const intx = await rpc.decodeRawTransaction(intxHex);
+
+			let value = -1;
+			for (let ix=0; ix<intx.vout.length; ix++)
+			    if (intx.vout[ix].n == vin.vout)
+				value = intx.vout[ix].value;
+
+			if (value == -1)
+			    process.exit(); // blow up if we don't find this input
+
+			data.ins.push([vin.txid+'-'+vin.vout, valueToInt(value).toString()]);
+		    }
 		}
 
 		// iterate over the outputs
