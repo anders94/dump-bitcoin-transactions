@@ -28,8 +28,8 @@ const main = async () => {
 	const hash = await rpc.getBlockHash(height);
 	const block = await rpc.getBlock(hash);
 
-	let data = { ins: [ ], outs: [ ] };
 	for (let t=0; t<block.tx.length; t++) {
+	    let data = { ins: [ ], outs: [ ] };
 	    if (block.tx[t] == '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b') {
 		// the genesis transaction isn't in the UTXO set
 		data.ins.push(['0000000000000000000000000000000000000000000000000000000000000000-0', 5000000000n.toString()]);
