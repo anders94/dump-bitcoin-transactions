@@ -21,10 +21,10 @@ const valueToInt = (val) => {
 
 };
 
-const main = async () => {
+const main = async (startingBlock) => {
     const info = await rpc.getBlockchainInfo();
 
-    for (let height=0; height<info.blocks; height++) {
+    for (let height=startingBlock; height<info.blocks; height++) {
 	const hash = await rpc.getBlockHash(height);
 	const block = await rpc.getBlock(hash);
 
@@ -32,7 +32,7 @@ const main = async () => {
 	    let data = { ins: [ ], outs: [ ] };
 	    if (block.tx[t] == '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b') {
 		// the genesis transaction isn't in the UTXO set
-		data.ins.push(['0000000000000000000000000000000000000000000000000000000000000000-0', 5000000000n.toString()]);
+		data.ins.push('0000000000000000000000000000000000000000000000000000000000000000-0');
 		data.outs.push(['1111111111111111111111111111111111111111111111111111111111111111-0', 5000000000n.toString()]);
 	    }
 	    else {
@@ -44,20 +44,9 @@ const main = async () => {
 		    const vin = tx.vin[i];
 
 		    if (vin.coinbase)
-			data.ins.push(['0000000000000000000000000000000000000000000000000000000000000000-0', allowedSupply(block.height).toString()]);
+			data.ins.push('0000000000000000000000000000000000000000000000000000000000000000-0');
 		    else {
-			const intxHex = await rpc.getRawTransaction(vin.txid);
-			const intx = await rpc.decodeRawTransaction(intxHex);
-
-			let value = -1;
-			for (let ix=0; ix<intx.vout.length; ix++)
-			    if (intx.vout[ix].n == vin.vout)
-				value = intx.vout[ix].value;
-
-			if (value == -1)
-			    process.exit(); // blow up if we don't find this input
-
-			data.ins.push([vin.txid+'-'+vin.vout, valueToInt(value).toString()]);
+			data.ins.push(vin.txid+'-'+vin.vout);
 		    }
 		}
 
@@ -68,10 +57,9 @@ const main = async () => {
 		    data.outs.push([tx.hash+'-'+vout.n, valueToInt(vout.value).toString()]);
 		}
 
-		// dump the transaction
-		console.log(JSON.stringify(data));
-
 	    }
+	    // dump the transaction
+	    console.log(JSON.stringify(data));
 
 	}
 
@@ -79,4 +67,4 @@ const main = async () => {
 
 }
 
-main();
+main(process.argv[2] ? process.argv[2] : 0);
