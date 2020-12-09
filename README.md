@@ -24,8 +24,10 @@ as well as associated values. Each line of the output is a complete JSON string 
   ]
 }
 ```
-Coinbase transactions come from the imaginary transaction id
-`0000000000000000000000000000000000000000000000000000000000000000`.
+Coinbase transactions come from the imaginary transaction id / index:
+```
+0000000000000000000000000000000000000000000000000000000000000000-0
+```
 
 ## Sample Output
 ```
