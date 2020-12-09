@@ -61,9 +61,6 @@ const main = async (startingBlock) => {
 	    // dump the transaction
 	    console.log(JSON.stringify(data));
 
-	    // dump the transaction
-	    console.log(JSON.stringify(data));
-
 	}
 
     }
