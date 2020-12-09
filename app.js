@@ -68,10 +68,10 @@ const main = async () => {
 		    data.outs.push([tx.hash+'-'+vout.n, valueToInt(vout.value).toString()]);
 		}
 
-		// dump the transaction
-		console.log(JSON.stringify(data));
-
 	    }
+
+	    // dump the transaction
+	    console.log(JSON.stringify(data));
 
 	}
 
