@@ -67,4 +67,4 @@ const main = async (startingBlock) => {
 
 }
 
-main(process.argv[2] ? process.argv[2] : 0);
+main(process.argv[2] ? Number(process.argv[2]) : 0);
