@@ -58,6 +58,11 @@ Run the app and capture the results from STDOUT.
 node app > transactions.txt
 ```
 
+Optionally, you can add a starting block number. To start at block 100,000:
+```
+node app 100000 > transactions.txt
+```
+
 ## License
 Copyright (c) 2020 Anders Brownworth
 
