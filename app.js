@@ -26,19 +26,18 @@ const main = async (startingBlock) => {
 
     for (let height=startingBlock; height<info.blocks; height++) {
 	const hash = await rpc.getBlockHash(height);
-	const block = await rpc.getBlock(hash);
+	const block = await rpc.getBlock(hash, 2);
 
 	for (let t=0; t<block.tx.length; t++) {
+	    const tx = block.tx[t];
 	    let data = { ins: [ ], outs: [ ] };
-	    if (block.tx[t] == '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b') {
+
+	    if (tx.txid == '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b') {
 		// the genesis transaction isn't in the UTXO set
 		data.ins.push('0000000000000000000000000000000000000000000000000000000000000000-0');
 		data.outs.push(['1111111111111111111111111111111111111111111111111111111111111111-0', 5000000000n.toString()]);
 	    }
 	    else {
-		const txHex = await rpc.getRawTransaction(block.tx[t]);
-		const tx = await rpc.decodeRawTransaction(txHex);
-
 		// iterate over the inputs
 		for (let i=0; i<tx.vin.length; i++) {
 		    const vin = tx.vin[i];
