@@ -40,16 +40,16 @@ Coinbase transactions come from the imaginary transaction id / index:
 ## First 100M Rows
 Here's links to gzipped files of the first 100M bitcoin transactions.
 
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-01.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-02.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-03.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-04.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-05.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-06.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-07.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-08.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-09.txt.gz
-https://cbdc-test-data.s3.amazonaws.com/btc-tx-10.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-01.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-02.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-03.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-04.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-05.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-06.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-07.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-08.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-09.txt.gz
+* https://cbdc-test-data.s3.amazonaws.com/btc-tx-10.txt.gz
 
 ## Setup
 Install all the dependancies:
